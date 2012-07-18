@@ -1,0 +1,6 @@
+ShellScripts
+============
+
+Shell Scripts is a collection of Linux Shell Scripts used to perform common tasks.
+
+SSL_Gen_Key: Used for generating a self signed server certificate or one or more self signed server/client pairs.

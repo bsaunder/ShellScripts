@@ -1,0 +1,21 @@
+Usage Instructions
+------------------------
+1) Setup ssl.properties
+  a) See Setup Instructions Below
+2) Execute: sh genKeys.sh
+
+
+SSL Properties
+------------------------
+Before you can generate any SSL Scripts, you need to setup the ssl.properties file. It should be in the same directory as the genKeys.sh script. Below is a list of all the properties you can set in the file and a brief description of each.
+
+Name		Req	Description
+country		Y	Country to be used for all Certificates/Keys
+state=		Y	State to be used for all Certificates/Keys
+city=		Y	City to be used for all Certificates/Keys
+org=		Y	Organization to be used for all Certificates/Keys
+orgUnit		Y	Organization Unit to be used for all Certificates/Keys
+server		Y	Server Hostname
+clientCount	Y	Number of Client/Server pairs to generate. Set to 0 to generate server certificates only
+client_X		Host name for Client X, where X is the Client Number. For example, if clientCount is set to 2, then you will have a client_1 & client_2 property
+
