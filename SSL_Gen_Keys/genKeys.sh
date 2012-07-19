@@ -72,21 +72,22 @@ yes
 EOF
 
 		echo "Generating PKCS12 Keystore..."
-		openssl pkcs12 -export -out client_$i-keystore.pkcs12 -inkey client_$i-private-key.pem -in client_$i-certificate.pem -passout pass:$password 
+		openssl pkcs12 -export -out client_$i.pkcs12 -inkey client_$i-private-key.pem -in client_$i-certificate.pem -passout pass:$password 
 
 		echo "Generating JKS Keystore..."
-		keytool -importkeystore -srckeystore client_$i-keystore.pkcs12 -srcstoretype PKCS12 -destkeystore client_$i.jks -deststoretype JKS -storepass $password -keypass $password << EOF
+		keytool -importkeystore -srckeystore client_$i.pkcs12 -srcstoretype PKCS12 -destkeystore client_$i-keystore.jks -deststoretype JKS -storepass $password -keypass $password << EOF
 $password
 EOF
 
 		echo "Cleaning Up Client Certs..."
 		rm client_$i-private-key.pem
 		rm client_$i-certificate.pem
-		rm client_$i-keystore.pkcs12
+		
 
 		mkdir $clientPath
 		mv client_$i-truststore.jks $clientPath
-		mv client_$i.jks $clientPath
+		mv client_$i-keystore.jks $clientPath
+		mv client_$i.pkcs12 $clientPath
 		
 
 		i=$[$i+1]
